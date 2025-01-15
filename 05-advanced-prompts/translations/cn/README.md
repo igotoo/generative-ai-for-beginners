@@ -1,6 +1,6 @@
 # 第五章：创建高级的提示工程技巧
 
-[![Creating Advanced Prompts](../../images/05-lesson-banner.png?WT.mc_id=academic-105485-koreyst)](https://youtu.be/32GBH6BTWZQ?WT.mc_id=academic-105485-koreyst)
+[![Creating Advanced Prompts](../../images/05-lesson-banner.png?WT.mc_id=academic-105485-koreyst)](https://aka.ms/gen-ai-lesson5-gh?WT.mc_id=academic-105485-koreyst)
 
 让我们回顾一下上一章的一些知识：
 
@@ -58,19 +58,29 @@
 
 我们可以使用一些基本技巧来提示 LLM。 让我们来探索一下它们。
 
-- **少样本提示**，这是最基本的提示形式。 这是一个带有几个示例的提示。
+- **零样本提示**，这是最基本的提示形式。它是一种单次提示，要求 LLM 仅根据其训练数据做出响应。
+- **少样本提示**，这种类型的提示通过提供一个或多个示例来引导 LLM 生成响应。
 - **思维链**，这种类型的提示告诉 LLMs 如何将问题分解为步骤。
 - **生成的知识**，为了提高提示的响应，您可以在提示中额外提供生成的事实或知识。
 - **从最少到最多**，就像链式分析一样，这种技术是将问题分解为一系列步骤，然后要求按顺序执行这些步骤。
 - **自我完善**，这种技术是修正 LLM 的输出，然后要求其改进。
 - **多维度提示**。 您在这里想要的是确保 LLM 答案是正确的，并要求它解释答案的各个部分。 这是一种自我完善的形式。
 
-### 少样本提示
+### 零样本提示
 
-这种提示风格非常简单，它可能由一个提示和几个示例组成。 当您开始学习 LLMs 时，您可能正在使用这种技术。 这是一个例子：
+这种提示风格非常简单，它只有一个提示。当你开始学习 LLM 时，可能就会用到这种方法。下面是一个例子：
 
 - Prompt: "What is Algebra?"
 - Answer: "Algebra is a branch of mathematics that studies mathematical symbols and the rules for manipulating these symbols."
+
+### 少样本提示
+
+这种提示方式通过在提出请求的同时提供一些示例来帮助模型。它由单个提示和附加的特定任务数据组成。下面是一个例子：
+
+- Prompt: "以莎士比亚的风格写一首诗。下面是一些莎士比亚十四行诗的例子：十四行诗第 18 首："我要把你比作夏日吗？你更可爱，更有节制......'第 116 首十四行诗："让我不要为真正心灵的结合设置障碍。爱不是爱，当它发现改变时就会改变......'十四行诗第 132 首："我爱你的眼睛，它们怜悯我，知道你的心在折磨我，对我不屑一顾......现在，请写一首关于月亮之美的十四行诗。"
+- Answer："在天空中，月亮闪烁着柔和的光芒，散发着温柔的光辉，......"
+
+示例为 LLM 提供了所需输出的背景、格式或风格。它们有助于模型理解具体任务，并生成更准确、更相关的回复。
 
 ### 思维链
 
@@ -81,11 +91,11 @@
 
 LLM 给出的答案为 5，这是不正确的。 根据计算结果 (5 -3 -2 + 1 = 1)，正确答案是 1 个苹果。
 
-那么我们怎样才能教LLM正确地做到这一点呢？
+那么我们怎样才能教 LLM 正确地做到这一点呢？
 
 让我们尝试一下思维链。 应用思维链意味着：
 
-1. 给LLM一个类似的例子。
+1. 给 LLM 一个类似的例子。
 2. 展示计算结果，以及如何正确计算。
 3. 提供原始提示。
 
@@ -108,7 +118,7 @@ LLM 给出的答案为 5，这是不正确的。 根据计算结果 (5 -3 -2 + 1
 
     ```text
     {{company}}: {{company_name}}
-    {{products}}: 
+    {{products}}:
     {{products_list}}
     Please suggest an insurance given the following budget and requirements:
     Budget: {{budget}}
@@ -121,13 +131,13 @@ LLM 给出的答案为 5，这是不正确的。 根据计算结果 (5 -3 -2 + 1
 
     ```text
     Insurance company: ACME Insurance
-    Insurance products (cost per month): 
+    Insurance products (cost per month):
     - Car, cheap, 500 USD
-    - Car, expensive, 1100 USD 
+    - Car, expensive, 1100 USD
     - Home, cheap, 600 USD
     - Home, expensive, 1200 USD
     - Life, cheap, 100 USD
-    
+
     Please suggest an insurance given the following budget and requirements:
     Budget: $1000
     Requirements: Car, Home
@@ -137,11 +147,11 @@ LLM 给出的答案为 5，这是不正确的。 根据计算结果 (5 -3 -2 + 1
 
     ```output
     , and Life insurance
-    
-    Given the budget and requirements, we suggest the following insurance package from ACME Insurance: 
-    - Car, cheap, 500 USD 
-    - Home, cheap, 600 USD 
-    - Life, cheap, 100 USD 
+
+    Given the budget and requirements, we suggest the following insurance package from ACME Insurance:
+    - Car, cheap, 500 USD
+    - Home, cheap, 600 USD
+    - Life, cheap, 100 USD
     Total cost: $1,200 USD
     ```
 
@@ -149,13 +159,13 @@ LLM 给出的答案为 5，这是不正确的。 根据计算结果 (5 -3 -2 + 1
 
     ```text
     Insurance company: ACME Insurance
-    Insurance products (cost per month): 
+    Insurance products (cost per month):
     - type: Car, cheap, cost: 500 USD
-    - type: Car, expensive, cost: 1100 USD 
+    - type: Car, expensive, cost: 1100 USD
     - type: Home, cheap, cost: 600 USD
     - type: Home, expensive, cost: 1200 USD
     - type: Life, cheap, cost: 100 USD
-    
+
     Please suggest an insurance given the following budget and requirements:
     Budget: $1000 restrict choice to types: Car, Home
     ```
@@ -168,7 +178,7 @@ LLM 给出的答案为 5，这是不正确的。 根据计算结果 (5 -3 -2 + 1
     Given the budget and requirements, we suggest the Car, Cheap insurance product which costs 500 USD per month.
     ```
 
-这个例子的目的是表明，即使我们使用像_生成知识_这样的基本技术，我们仍然需要在大多数情况下优化提示以获得所需的结果。
+这个例子的目的是表明，即使我们使用像*生成知识*这样的基本技术，我们仍然需要在大多数情况下优化提示以获得所需的结果。
 
 ### 从少到多
 
@@ -182,16 +192,16 @@ LLM 给出的答案为 5，这是不正确的。 根据计算结果 (5 -3 -2 + 1
 2. 清理数据
 3. 分析数据
 4. 绘制数据
-5. 现有数据
+5. 展示数据
 
 ### 自我完善，质疑结果
 
-对于生成式人工智能和 LLMs，你不能相信其输出。 你需要验证一下。 毕竟， LLMs只是向您展示下一个最有可能说的话，而不是正确的内容。 因此，一个好主意是要求 LLMs 自我批评，这引导我们自我完善技术。
+对于生成式人工智能和 LLMs，你不能相信其输出。 你需要验证一下。 毕竟， LLMs 只是向您展示下一个最有可能说的话，而不是正确的内容。 因此，一个好主意是要求 LLMs 自我批评，这引导我们自我完善技术。
 
 其工作原理是按照以下步骤操作：
 
-1. 要求LLM解决问题的初始提示
-2. LLM产生答案
+1. 要求 LLM 解决问题的初始提示
+2. LLM 产生答案
 3. 质疑答案并要求人工智能改进
 4. LLM 再次回答，这次考虑了质疑并提出了解决方案
 
@@ -206,11 +216,11 @@ AI Answer:
     ```python
     import flask
     app = Flask(__name__)
-    
+
     @app.route('/products')
     def products():
         return 'Products'
-    
+
     @app.route('/customers')
     def customers():
         return 'Customers'
@@ -222,27 +232,27 @@ AI Answer:
 
     ```text
     Sure, here are three suggestions to improve the code:
-    
+
     Import the correct module: The first line should import Flask instead of flask. The correct import statement should be from flask import Flask.
-    
+
     Add a main function: Add a if __name__ == '__main__': block to the end of the file to run the application when the file is executed.
-    
+
     Use f-strings: Use f-strings to format the return statements in the route functions. For example, return 'Products' can be changed to return f'This is the {request.path} page'.
     ```
 
     ```python
     from flask import Flask, request
-    
+
     app = Flask(__name__)
-    
+
     @app.route('/products')
     def products():
         return f'This is the {request.path} page'
-    
+
     @app.route('/customers')
     def customers():
         return f'This is the {request.path} page'
-    
+
     if __name__ == '__main__':
         app.run()
     ```
@@ -254,13 +264,13 @@ AI Answer:
 多维度的提示是一种类似于自我完善的技术，但它更多的是要求 LLMs 解释自己。 目标是减少 LLMs 输出不一致，以确保得出正确的答案。 要遵循的工作流程是：
 
 1. 请 LLM 回答问题
-2. 对于答案的每一部分，请LLM更深入地解释。
+2. 对于答案的每一部分，请 LLM 更深入地解释。
 3. 如果存在不一致，则丢弃不一致的部分。
 
 重复 2 和 3，直到您完成所有部分并对答案感到满意为止。
 
 > prompt: How can I create a crisis plan to mitigate for a pandemic in 5 steps?
-LLM answer:
+> LLM answer:
 
     ```text
     1. Identify the risks
@@ -270,13 +280,13 @@ LLM answer:
     1. Identify the communication channels
     ```
 
-它确定了 5 个步骤，但是我们可以确定这是否正确吗？ 让我们请LLM解释一下每一步：
+它确定了 5 个步骤，但是我们可以确定这是否正确吗？ 让我们请 LLM 解释一下每一步：
 
 > prompt: Explain the first step in more detail, what are the risks in detail with a pandemic?
 
     ```text
     The risks are the following:
-    
+
     - Loss of life
     - Loss of business
     - Loss of reputation
@@ -310,34 +320,34 @@ LLM 本质上是不确定的，这意味着每次运行相同的提示时都会�
     # Import necessary modules
     import flask
     from flask import request, jsonify
-    
+
     # Create a Flask app
     app = flask.Flask(__name__)
-    
+
     # Create a route for the API
     @app.route('/api', methods=['GET'])
     def api():
         # Get the data from the request
         data = request.args
-    
+
         # Process the data
         result = process_data(data)
-    
+
         # Return the result as JSON
         return jsonify(result)
-    
+
     # Function to process the data
     def process_data(data):
         # Do something with the data
         result = data + 1
-    
+
         # Return the result
         return result
-    
+
     # Run the app
     if __name__ == '__main__':
         app.run()
-    
+
     ```
 
 再次运行相同的提示会生成略有不同的响应：
@@ -346,11 +356,11 @@ LLM 本质上是不确定的，这意味着每次运行相同的提示时都会�
     #import necessary packages
     import flask
     from flask import request, jsonify
-    
+
     #create the Flask application
     app = flask.Flask(__name__)
     app.config["DEBUG"] = True
-    
+
     #create a list of books
     books = [
         {'id': 0,
@@ -369,18 +379,18 @@ LLM 本质上是不确定的，这意味着每次运行相同的提示时都会�
          'first_sentence': 'to wound the autumnal city.',
          'published': '1975'}
     ]
-    
+
     #create an endpoint for the API
     @app.route('/', methods=['GET'])
     def home():
         return '''<h1>Books API</h1>
     <p>A prototype API for retrieving books.</p>'''
-    
+
     #create an endpoint to return all books
     @app.route('/api/v1/resources/books/all', methods=['GET'])
     def api_all():
         return jsonify(books)
-    
+
     #create an endpoint to return a single book
     @app.route('/api/v1/resources/books', methods=['GET'])
     def api_id():
@@ -391,24 +401,24 @@ LLM 本质上是不确定的，这意味着每次运行相同的提示时都会�
             id = int(request.args['id'])
         else:
             return "Error: No id field provided. Please specify an id."
-    
+
         #create an empty list for our results
         results = []
-    
+
         #loop through the data and match results that fit the requested ID
         #IDs are unique, but other fields might return many results
         for book in books:
             if book['id'] == id:
                 results.append(book)
-    
+
         #use the jsonify function from Flask to convert our list of
         #Python dictionaries to the JSON format
         return jsonify(results)
-    
+
     app.run()
     ```
 
-> So is the varied output a problem?
+> 多变的输出是个问题吗？
 
 取决于你想做什么。 如果你想要一个具体的回应，那就是一个问题。 如果您可以接受诸如“生成任意 3 个地理问题”之类的不同输出，那么这不是问题。
 
@@ -424,34 +434,34 @@ LLM 本质上是不确定的，这意味着每次运行相同的提示时都会�
     #import necessary libraries
     import flask
     from flask import request, jsonify
-    
+
     #create an instance of the Flask class
     app = flask.Flask(__name__)
-    
+
     #create an endpoint for the API
     @app.route('/api/v1/endpoint', methods=['GET'])
     def api_endpoint():
         #get the request data
         data = request.get_json()
-    
+
         #process the data
         result = process_data(data)
-    
+
         #return the result
         return jsonify(result)
-    
+
     #function to process the data
     def process_data(data):
         #process the data
         result = {'result': 'success'}
-    
+
         #return the result
         return result
-    
+
     #run the Flask app
     if __name__ == '__main__':
         app.run()
-    
+
     ```
 
 再次运行提示符会给我们这样的结果：
@@ -460,34 +470,34 @@ LLM 本质上是不确定的，这意味着每次运行相同的提示时都会�
     #import necessary libraries
     import flask
     from flask import request, jsonify
-    
+
     #create a Flask app
     app = flask.Flask(__name__)
-    
+
     #create a route for the API
     @app.route('/api', methods=['GET'])
     def api_call():
         #get the data from the request
         data = request.get_json()
-        
+
         #process the data
         result = process_data(data)
-        
+
         #return the result
         return jsonify(result)
-    
+
     #define the process_data function
     def process_data(data):
         #do something with the data
         result = data + 1
-        
+
         #return the result
         return result
-    
+
     #run the app
     if __name__ == '__main__':
         app.run()
-    
+
     ```
 
 这两个输出之间只有很小的差异。 这次我们反其道而行之，将温度设置为 0.9：
@@ -496,34 +506,34 @@ LLM 本质上是不确定的，这意味着每次运行相同的提示时都会�
     # Import necessary libraries
     import flask
     from flask import request, jsonify
-    
+
     # Create a Flask app
     app = flask.Flask(__name__)
-    
+
     # Create a route for the API
     @app.route('/api', methods=['GET'])
     def api_call():
         # Get the data from the request
         data = request.args
-    
+
         # Process the data
         result = process_data(data)
-    
+
         # Return the result
         return jsonify(result)
-    
+
     # Function to process the data
     def process_data(data):
         # Do something with the data
         result = data + 1
-    
+
         # Return the result
         return result
-    
+
     # Run the app
     if __name__ == '__main__':
         app.run()
-    
+
     ```
 
 第二次尝试使用 0.9 作为温度值：
@@ -531,30 +541,30 @@ LLM 本质上是不确定的，这意味着每次运行相同的提示时都会�
     ```python
     import flask
     from flask import request, jsonify
-    
+
     # create the Flask app
     app = flask.Flask(__name__)
     app.config['DEBUG'] = True
-    
+
     # create some test data
     books = [
         {'id': 0, 'title': 'A Fire Upon The Deep', 'author': 'Vernor Vinge', 'first_sentence': 'The coldsleep itself was dreamless.', 'year_published': '1992'},
         {'id': 1, 'title': 'The Ones Who Walk Away From Omelas', 'author': 'Ursula K. Le Guin', 'first_sentence': 'With a clamor of bells that set the swallows soaring, the Festival of Summer came to the city Omelas, bright-towered by the sea.', 'published': '1973'},
         {'id': 2, 'title': 'Dhalgren', 'author': 'Samuel R. Delany', 'first_sentence': 'to wound the autumnal city.', 'published': '1975'}
     ]
-    
+
     # create an endpoint
     @app.route('/', methods=['GET'])
     def home():
         return '''<h1>Welcome to our book API!</h1>'''
-    
+
     @app.route('/api/v1/resources/books
-    
+
     ```
 
 正如您所看到的，结果各式各样。
 
-> 请注意，您可以更改更多参数来改变输出，例如 top-k, top-p, repetition penalty, length penalty and diversity penalty ，但这些不属于本课程的范围。  
+> 请注意，您可以更改更多参数来改变输出，例如 top-k, top-p, repetition penalty, length penalty and diversity penalty ，但这些不属于本课程的范围。
 
 ## 最佳实践
 
@@ -576,14 +586,14 @@ LLM 本质上是不确定的，这意味着每次运行相同的提示时都会�
 
     ```python
     from flask import Flask, request
-    
+
     app = Flask(__name__)
-    
+
     @app.route('/')
     def hello():
         name = request.args.get('name', 'World')
         return f'Hello, {name}!'
-    
+
     if __name__ == '__main__':
         app.run()
     ```
@@ -597,7 +607,7 @@ LLM 本质上是不确定的，这意味着每次运行相同的提示时都会�
 > [!TIP]
 > 短语提示要求它改进，限制改进的数量是个好主意。 您还可以要求以某种方式改进它，例如架构、性能、安全性等。
 
-[Solution](../../solution.py?WT.mc_id=academic-105485-koreyst)
+[Solution](../../python/aoai-solution.py?WT.mc_id=academic-105485-koreyst)
 
 ## 知识检查
 
@@ -615,6 +625,6 @@ LLM 本质上是不确定的，这意味着每次运行相同的提示时都会�
 
 ## 继续学习
 
-想要了解有关创建高级提示的更多信息？ 转至[进阶学习的页面](../../../13-continued-learning/translations/cn/README.md?WT.mc_id=academic-105485-koreyst) 查找有关此主章节的其他学习资源。
+想要了解有关创建高级提示的更多信息？ 转至[进阶学习的页面](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) 查找有关此主章节的其他学习资源。
 
-前往第六章，我们将应用提示工程知识[构建文本生成应用程序](../../../06-text-generation-apps/translations/cn/README.md?WT.mc_id=academic-105485-koreyst) 
+前往第六章，我们将应用提示工程知识[构建文本生成应用程序](../../../06-text-generation-apps/translations/cn/README.md?WT.mc_id=academic-105485-koreyst)

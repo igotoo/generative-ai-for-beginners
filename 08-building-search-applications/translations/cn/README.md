@@ -1,8 +1,6 @@
 # 第八章：创建搜索应用
 
-[![Introduction to Generative AI and Large Language Models](../../images/08-lesson-banner.png?WT.mc_id=academic-105485-koreyst)](TBD)
-
-> **导学视频敬请期待**
+[![Introduction to Generative AI and Large Language Models](../../images/08-lesson-banner.png?WT.mc_id=academic-105485-koreyst)](https://aka.ms/gen-ai-lesson8-gh?WT.mc_id=academic-105485-koreyst)
 
 LLMs 应用场景不仅仅是聊天机器人和文本生成。 还可以使用嵌入的方式来构建搜索应用程序。 嵌入是数据的数字表示，也称为向量，可用于数据的语义搜索。
 
@@ -31,7 +29,7 @@ LLMs 应用场景不仅仅是聊天机器人和文本生成。 还可以使用�
 
 创建搜索应用将帮助您了解如何使用嵌入来搜索数据。 您还将学习如何构建可供学生快速查找信息的搜索应用程序。
 
-本课程包括 Microsoft [AI Show](https://www.youtube.com/playlist?list=PLlrxD0HtieHi0mwteKBOfEeOYf0LJU4O1?WT.mc_id=academic-105485-koreyst) YouTube 频道的 YouTube 记录的嵌入索引。 AI Show 是一个 YouTube 频道，向您介绍人工智能和机器学习。 嵌入索引包含截至 2023 年 10 月每个 YouTube 记录的嵌入。您将使用嵌入索引为“Our Startup”构建搜索应用程序。 搜索应用程序返回视频中问题答案所在位置的链接。 这是学生快速找到所需信息的好方法。
+本课程包括 Microsoft [AI Show](https://www.youtube.com/playlist?list=PLlrxD0HtieHi0mwteKBOfEeOYf0LJU4O1) YouTube 频道的 YouTube 记录的嵌入索引。 AI Show 是一个 YouTube 频道，向您介绍人工智能和机器学习。 嵌入索引包含截至 2023 年 10 月每个 YouTube 记录的嵌入。您将使用嵌入索引为“Our Startup”构建搜索应用程序。 搜索应用程序返回视频中问题答案所在位置的链接。 这是学生快速找到所需信息的好方法。
 
 以下是问题“can you use rstudio with azure ml?”的语义查询示例。 查看 YouTube 网址，您会看到该网址包含一个时间戳，可将您带到视频中问题答案所在的位置。
 
@@ -49,7 +47,6 @@ LLMs 应用场景不仅仅是聊天机器人和文本生成。 还可以使用�
 
 下面是一个示例，图像以下文本是 AI Show YouTube 频道上某一集的文字记录：
 
-
 ```text
 Today we are going to learn about Azure Machine Learning.
 ```
@@ -66,7 +63,7 @@ Today we are going to learn about Azure Machine Learning.
 
 这些脚本执行以下操作：
 
-1. 下载 [AI Show](https://www.youtube.com/playlist?list=PLlrxD0HtieHi0mwteKBOfEeOYf0LJU4O1?WT.mc_id=academic-105485-koreyst) 播放列表中每个 YouTube 视频的文字记录。
+1. 下载 [AI Show](https://www.youtube.com/playlist?list=PLlrxD0HtieHi0mwteKBOfEeOYf0LJU4O1) 播放列表中每个 YouTube 视频的文字记录。
 2. 使用[OpenAI Functions](https://learn.microsoft.com/azure/ai-services/openai/how-to/function-calling?WT.mc_id=academic-105485-koreyst)，尝试 从 YouTube 记录的前 3 分钟中提取演讲者姓名。 每个视频的演讲者姓名存储在名为 `embedding_index_3m.json` 的嵌入索引中。
 3. 然后将转录文本分成 **3 分钟的文本片段**。 该片段包含大约 20 个与下一个片段重叠的单词，以确保该片段的嵌入不会被切断并提供更好的搜索上下文。
 4. 然后，每个文本片段都会传递到 OpenAI Chat API，将文本总结为 60 个单词。 摘要也存储在嵌入索引 `embedding_index_3m.json` 中。
@@ -74,7 +71,7 @@ Today we are going to learn about Azure Machine Learning.
 
 ### 向量数据库
 
-为了简单起见，嵌入索引存储在名为 `embedding_index_3m.json` 的 JSON 文件中，并加载到 Pandas Dataframe 中。 但是，在生产中，嵌入索引将存储在向量数据库中，例如  [Azure Cognitive Search](https://learn.microsoft.com/training/modules/improve-search-results-vector-search?WT.mc_id=academic-105485-koreyst), [Redis](https://cookbook.openai.com/examples/vector_databases/redis/readme?WT.mc_id=academic-105485-koreyst), [Pinecone](https://cookbook.openai.com/examples/vector_databases/pinecone/readme), [Weaviate](https://cookbook.openai.com/examples/vector_databases/weaviate/readme?WT.mc_id=academic-105485-koreyst)
+为了简单起见，嵌入索引存储在名为 `embedding_index_3m.json` 的 JSON 文件中，并加载到 Pandas Dataframe 中。 但是，在生产中，嵌入索引将存储在向量数据库中，例如 [Azure Cognitive Search](https://learn.microsoft.com/training/modules/improve-search-results-vector-search?WT.mc_id=academic-105485-koreyst), [Redis](https://cookbook.openai.com/examples/vector_databases/redis/readme?WT.mc_id=academic-105485-koreyst), [Pinecone](https://cookbook.openai.com/examples/vector_databases/pinecone/readme), [Weaviate](https://cookbook.openai.com/examples/vector_databases/weaviate/readme?WT.mc_id=academic-105485-koreyst)
 
 ## 理解余弦相似度
 
@@ -104,13 +101,11 @@ Today we are going to learn about Azure Machine Learning.
 2. 选择 Azure 门户右上角的 Cloud Shell 图标。
 3. 选择 **Bash** 作为环境类型。
 
-
 #### 创建资源组
 
 > 通过指引我们使用美国东部名为“semantic-video-search”的资源组。
 > 您可以更改资源组的名称，更改资源的位置等
 > 检查[可用的模型](https://aka.ms/oai/models?WT.mc_id=academic-105485-koreyst)。
-
 
 ```shell
 az group create --name semantic-video-search --location eastus
@@ -126,9 +121,10 @@ az cognitiveservices account create --name semantic-video-openai --resource-grou
 ```
 
 #### Get the endpoint and keys for usage in this application
-#### 获取此应用程序中使用的 endpoint 和 keys 
 
-从 Azure Cloud Shell 运行以下命令以获取 Azure OpenAI 服务资源的终 endpoint 和 keys 
+#### 获取此应用程序中使用的 endpoint 和 keys
+
+从 Azure Cloud Shell 运行以下命令以获取 Azure OpenAI 服务资源的终 endpoint 和 keys
 
 ```shell
 az cognitiveservices account show --name semantic-video-openai \
@@ -149,12 +145,12 @@ az cognitiveservices account deployment create \
     --model-name text-embedding-ada-002 \
     --model-version "2"  \
     --model-format OpenAI \
-    --scale-settings-scale-type "Standard"
+    --sku-capacity 100 --sku-name "Standard"
 ```
 
 ## 解决方案
 
-在 GitHub Codespaces 中打开 [solution notebook](../../solution.ipynb?WT.mc_id=academic-105485-koreyst) 并按照 Jupyter Notebook 中的说明进行操作。
+在 GitHub Codespaces 中打开 [solution notebook](../../python/aoai-solution.ipynb?WT.mc_id=academic-105485-koreyst) 并按照 Jupyter Notebook 中的说明进行操作。
 
 当您运行 notebook 时，系统将提示您输入查询。 输入框将如下所示：
 
@@ -162,6 +158,6 @@ az cognitiveservices account deployment create \
 
 ## 继续学习
 
-想要了解有关创建搜索应用的更多信息？ 转至[进阶学习的页面](../../../13-continued-learning/translations/cn/README.md?WT.mc_id=academic-105485-koreyst) 查找有关此主章节的其他学习资源。
+想要了解有关创建搜索应用的更多信息？ 转至[进阶学习的页面](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) 查找有关此主章节的其他学习资源。
 
-前往第九章，我们将学习[构建图像生成应用程序](../../../09-building-image-applications/translations/cn/README.md?WT.mc_id=academic-105485-koreyst) 
+前往第九章，我们将学习[构建图像生成应用程序](../../../09-building-image-applications/translations/cn/README.md?WT.mc_id=academic-105485-koreyst)

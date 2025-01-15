@@ -1,8 +1,8 @@
 # Explorando e comparando diferentes LLMs
 
-[![Exploring and comparing different LLMs](../../images/02-lesson-banner.png?WT.mc_id=academic-105485-koreyst)](https://youtu.be/J1mWzw0P74c?WT.mc_id=academic-105485-koreyst)
+[![Exploring and comparing different LLMs](../../images/02-lesson-banner.png?WT.mc_id=academic-105485-koreyst)](https://aka.ms/gen-ai-lesson2-gh?WT.mc_id=academic-105485-koreystt)
 
-> *Clique na imagem acima para ver o vídeo desta lição*
+> _Clique na imagem acima para ver o vídeo desta lição_
 
 Na lição anterior, vimos como a IA generativa está mudando o cenário tecnológico, como os Grandes Modelos de Linguagens (LLMs) funcionam e como uma empresa - como nossa startup - pode aplicá-los aos seus casos de uso e crescer! Neste capítulo, estamos procurando comparar e contrastar diferentes tipos de modelos de linguagem grandes, LLMs para entender seus prós e contras.
 
@@ -65,7 +65,7 @@ Fonte da imagem: [2108.07258.pdf (arxiv.org)](https://arxiv.org/pdf/2108.07258.p
 
 Outra maneira de categorizar os Modelos de Linguagem de Grande Escala (LLMs) é se eles são de código aberto ou proprietários.
 
-Os modelos de código aberto são modelos que são disponibilizados ao público e podem ser usados por qualquer pessoa. Eles são frequentemente disponibilizados pela empresa que os criou ou pela comunidade de pesquisa. Esses modelos podem ser inspecionados, modificados e personalizados para diversos casos de uso em LLMs. No entanto, nem sempre são otimizados para uso em produção e podem não ser tão eficientes quanto os modelos proprietários. Além disso, o financiamento para modelos de código aberto pode ser limitado, e eles podem não ser mantidos a longo prazo ou não ser atualizados com as pesquisas mais recentes. Exemplos de modelos de código aberto populares incluem [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html?WT.mc_id=academic-105485-koreyst), [Bloom](https://sapling.ai/llm/bloom?WT.mc_id=academic-105485-koreyst) e [LLaMA](https://sapling.ai/llm/llama?WT.mc_id=academic-105485-koreyst).
+Os modelos de código aberto são modelos que são disponibilizados ao público e podem ser usados por qualquer pessoa. Eles são frequentemente disponibilizados pela empresa que os criou ou pela comunidade de pesquisa. Esses modelos podem ser inspecionados, modificados e personalizados para diversos casos de uso em LLMs. No entanto, nem sempre são otimizados para uso em produção e podem não ser tão eficientes quanto os modelos proprietários. Além disso, o financiamento para modelos de código aberto pode ser limitado, e eles podem não ser mantidos a longo prazo ou não ser atualizados com as pesquisas mais recentes. Exemplos de modelos de código aberto populares incluem [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html?WT.mc_id=academic-105485-koreyst), [Bloom](https://huggingface.co/bigscience/bloom) e [LLaMA](https://llama.meta.com).
 
 Os modelos proprietários são modelos de propriedade de uma empresa e não são disponibilizados ao público. Esses modelos são frequentemente otimizados para uso em produção. No entanto, não podem ser inspecionados, modificados ou personalizados para diferentes casos de uso. Além disso, nem sempre estão disponíveis gratuitamente e podem exigir uma assinatura ou pagamento para uso. Além disso, os usuários não têm controle sobre os dados usados para treinar o modelo, o que significa que devem confiar ao proprietário do modelo o compromisso com a privacidade dos dados e o uso responsável da IA. Exemplos de modelos proprietários populares incluem [modelos da OpenAI](https://platform.openai.com/docs/models/overview?WT.mc_id=academic-105485-koreyst), [Google Bard](https://sapling.ai/llm/bard?WT.mc_id=academic-105485-koreyst) ou [Claude 2](https://www.anthropic.com/index/claude-2?WT.mc_id=academic-105485-koreyst).
 
@@ -194,7 +194,6 @@ Saiba mais sobre como você pode [usar o RAG](https://learn.microsoft.com/azure/
 
 ## Ótimo Trabalho, Continue com Seu Aprendizado
 
-Deseja aprender mais sobre diferentes conceitos de IA Generativa? Acesse a [página de aprendizado contínuo](../../../13-continued-learning/translations/pt-br/README.md?WT.mc_id=academic-105485-koreyst) para encontrar outros ótimos recursos sobre este tópico.
+Deseja aprender mais sobre diferentes conceitos de IA Generativa? Acesse a [página de aprendizado contínuo](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) para encontrar outros ótimos recursos sobre este tópico.
 
 Vamos para a Lição 3, onde veremos como podemos [Criar IA Generativa de forma Responsável](../../../03-using-generative-ai-responsibly/translations/pt-br/README.md?WT.mc_id=academic-105485-koreyst)!
-
